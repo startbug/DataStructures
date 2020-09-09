@@ -10,7 +10,8 @@ public class Test {
 
 //    public static volatile int a = 0;
 
-    public static AtomicInteger a=new AtomicInteger(0);
+    public static AtomicInteger a = new AtomicInteger(0);
+
     public static void main(String[] args) {
         Test test = new Test();
         Thread[] threads = new Thread[5];
