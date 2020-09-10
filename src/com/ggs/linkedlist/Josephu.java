@@ -32,15 +32,9 @@ class CircleSingleLinkedList {
         //将first节点定位到指定的开始位置(num)
         for (int i = 1; i < start; i++) {
             first = first.next;
-            //helper为辅助节点,一直在first的后一个位置,为什么-3?画图就知道了
-//            if (i == start - 3) {
-//                helper = first;
-//            }
-//            if (i == start - 1) {
-//                helper = first;
-//            }
         }
 
+        //将helper辅助接点指向first的后一个节点上
         while (true) {
             if (helper.next == first) {
                 break;
@@ -48,14 +42,20 @@ class CircleSingleLinkedList {
             helper = helper.next;
         }
 
+
         while (true) {
+            //first和helper向前移动num-1步
             for (int i = 0; i < num-1; i++) {
                 first = first.next;
                 helper = helper.next;
             }
+            //出圈
             System.out.println(first);
+            //first指向下一个
             first = first.next;
+            //辅助指针的next依旧指向first
             helper.next = first;
+            //当只剩下一个时,结束
             if (first == helper) {
                 break;
             }
