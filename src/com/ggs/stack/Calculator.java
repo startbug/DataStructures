@@ -16,14 +16,40 @@ public class Calculator {
         CalculatorLinkedStack operStack = new CalculatorLinkedStack();
 
         //1.遍历表达式,获取每一个字符
-        String expression = "9-7*2-9/3+6";
+        String expression = "900-64/16+7*2-90/3+6";
         //2.得到一个符号后,判断是字符还是数字
         for (int i = 0; i < expression.length(); i++) {
             Character val = expression.charAt(i);
             //3.如果是数字,则直接进入数栈
             if (!CalculatorLinkedStack.isOper(val)) {
                 //数字
-                numStack.push(Integer.parseInt(val.toString()));
+//                numStack.push(Integer.parseInt(val.toString()));
+                int index = i;
+//                char indexNum = expression.charAt(index);
+                //如果下一个还是数字,则拼接完整后再放入数栈中
+                if (index < expression.length()-1 && !CalculatorLinkedStack.isOper(expression.charAt(index + 1))) {
+                    //如果下一个字符也是数字,则继续拼接
+
+                    StringBuilder sb = new StringBuilder(val.toString());
+                    while (!CalculatorLinkedStack.isOper(expression.charAt(++index))) {
+                        Character numIndex = expression.charAt(index);
+                        sb.append(numIndex);
+                    }
+                    numStack.push(Integer.parseInt(sb.toString()));
+                    i=index-1;
+                } else {
+                    //如果不是数字,则直接放入数栈中
+                    numStack.push(Integer.parseInt(val.toString()));
+                }
+//                if (!CalculatorLinkedStack.isOper(indexNum)) {
+//                    StringBuilder stringBuilder = new StringBuilder();
+//                    while (true) {
+//
+//                    }
+//                } else {
+//                    //如果下一个是符号,跳出该层循环
+//                    break;
+//                }
             } else {
                 //4.如果是符号,则分情况操作
                 //操作符
