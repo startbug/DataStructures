@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  * @Author Starbug
  * @Date 2020/9/10 16:23
+ * 中缀表达式运算
  */
 public class Calculator {
 
@@ -27,7 +28,7 @@ public class Calculator {
                 int index = i;
 //                char indexNum = expression.charAt(index);
                 //如果下一个还是数字,则拼接完整后再放入数栈中
-                if (index < expression.length()-1 && !CalculatorLinkedStack.isOper(expression.charAt(index + 1))) {
+                if (index < expression.length() - 1 && !CalculatorLinkedStack.isOper(expression.charAt(index + 1))) {
                     //如果下一个字符也是数字,则继续拼接
 
                     StringBuilder sb = new StringBuilder(val.toString());
@@ -36,20 +37,11 @@ public class Calculator {
                         sb.append(numIndex);
                     }
                     numStack.push(Integer.parseInt(sb.toString()));
-                    i=index-1;
+                    i = index - 1;
                 } else {
                     //如果不是数字,则直接放入数栈中
                     numStack.push(Integer.parseInt(val.toString()));
                 }
-//                if (!CalculatorLinkedStack.isOper(indexNum)) {
-//                    StringBuilder stringBuilder = new StringBuilder();
-//                    while (true) {
-//
-//                    }
-//                } else {
-//                    //如果下一个是符号,跳出该层循环
-//                    break;
-//                }
             } else {
                 //4.如果是符号,则分情况操作
                 //操作符
