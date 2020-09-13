@@ -42,33 +42,33 @@ public class Maze {
             System.out.println();
         }
     }
-//
-//    private static boolean findAWayOut(int[][] maze, int i, int j) {
-//        if (maze[6][5] == 2) {
-//            return true;
-//        } else {
-//            //如果该位置还未走过
-//            if (maze[i][j] == 0) {
-//                maze[i][j] = 2;
-//                //定义路线策略,下->右->上->左
-//                if (findAWayOut(maze, i + 1, j)) {
-//                    return true;
-//                } else if (findAWayOut(maze, i, j + 1)) {
-//                    return true;
-//                } else if (findAWayOut(maze, i - 1, j)) {
-//                    return true;
-//                } else if (findAWayOut(maze, i, j - 1)) {
-//                    return true;
-//                } else {
-//                    maze[i][j] = 3;
-//                    return false;
-//                }
-//            } else {
-//                //该位置是1,2或者3
-//                return false;
-//            }
-//        }
-//    }
+
+    private static boolean findAWayOut(int[][] maze, int i, int j) {
+        if (maze[6][5] == 2) {
+            return true;
+        } else {
+            //如果该位置还未走过
+            if (maze[i][j] == 0) {
+                maze[i][j] = 2;
+                //定义路线策略,下->右->上->左
+                if (findAWayOut(maze, i + 1, j)) {
+                    return true;
+                } else if (findAWayOut(maze, i, j + 1)) {
+                    return true;
+                } else if (findAWayOut(maze, i - 1, j)) {
+                    return true;
+                } else if (findAWayOut(maze, i, j - 1)) {
+                    return true;
+                } else {
+                    maze[i][j] = 3;
+                    return false;
+                }
+            } else {
+                //该位置是1,2或者3
+                return false;
+            }
+        }
+    }
 
     private static boolean findAWayOut2(int[][] maze, int i, int j) {
         if (maze[6][5] == 2) {
